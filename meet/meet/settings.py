@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'meet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.path.join(BASE_DIR, 'db_for_meet'),
     }
 }
