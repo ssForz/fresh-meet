@@ -2,7 +2,8 @@
 <html lang="rus">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="all css/css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'office/all_css/css/style.css' %}">
     <title>Личный кабинет</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,8 +32,8 @@
 </div>
 
 <div class="intro_2">
-    <p><img src="/Users/ekaterina/личный кабинет/all css/img/фото_профиля.jpeg" width="100" height="111" alt="Винни-Пух"></p>
-    <a class="button" href="#">Изменить фото профиля</a>
+    <p><img src="/Users/ekaterina/Desktop/office/all_css/img/фото_профиля.jpeg" width="100" height="111" alt="Винни-Пух"></p>
+    <a class="button" href="#">Редактировать профиль</a>
 </div>
 
 <div class="intro_2">
@@ -44,6 +45,16 @@
 <div class="intro_2">
     <a class="intro_2__text_vniz">Почта</a>
     <u class="intro__text">Почта_1</u>
+</div>
+
+<div class="intro_2">
+    <a class="intro_2__text_vniz">Рейтинг</a>
+    <u class="intro__text">Рейтинг_1</u>
+</div>
+
+<div class="intro_2">
+    <a class="intro_2__text_vniz">Увлечение</a>
+    <u class="intro__text">Увлечение_1</u>
 </div>
 
 <div class="intro_2">

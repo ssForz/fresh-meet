@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mail_check/all_css/css/style.css' %}">
+    <title>Проверка почты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header_logo">Проверка почты</div>
+</header>
+
+<div class="intro">
+    <a class="intro__text">Введите код, который пришел на введенную вами почту</a>
+    <input class="intro__pole" pattern="код" type="text">
+
+</div>
+
+
+<div class="intro_2">
+    <a class="button" href="#">Подтвердить</a>
+</div>
+
+</body>
+
+</html>

@@ -2,8 +2,9 @@
 <html lang="rus">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="all css/css/style.css">
-    <title>Вход</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/all_css/css/style.css' %}">
+    <title>Регистрация</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@200&display=swap" rel="stylesheet">
@@ -33,7 +34,13 @@
 
 <div class="intro_2">
     <a class="intro__text_2">Выберите ваше основное увлечение</a>
-    <input class="intro__pole" type="text">
+    <form>
+        <p><input class="intro__pole" list="hobbys"></p>
+        <datalist class="intro__pole" id="hobbys">
+            <option>Альпинизм</option>
+            <option>Скороговорки</option>
+        </datalist>
+    </form>
 </div>
 
 <div class="intro_2">

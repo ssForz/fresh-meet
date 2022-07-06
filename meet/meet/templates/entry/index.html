@@ -2,7 +2,8 @@
 <html lang="rus">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="all css/css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'entry/all_css/css/style.css' %}">
     <title>Вход</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,7 @@
 </header>
 
 <div class="intro">
-    <a class="intro__text">Введите логин</a>
+    <a class="intro__text">Введите почту</a>
     <input class="intro__pole" type="text">
 
 </div>
