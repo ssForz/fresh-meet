@@ -59,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .intro__suptitle {
+    padding-top: 40px;
     font-size: 30px;
     color: #0B4F76;
     text-align: center;
@@ -87,8 +88,10 @@ h1, h2, h3, h4, h5, h6 {
 .header_logo {
     font-size: 30px;
     font-weight: 700;
-    color: #0B4F76
+    color: #0B4F76;
 }
+
+
 
 /* Nav */
 .nav {
