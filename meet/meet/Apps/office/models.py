@@ -1,6 +1,6 @@
 from django.db import models
 
-class Office(models.Model):
+class User(models.Model):
 	CHOICE_SEX = (
 		('M', 'Male'),
 		('F', 'Female'),
@@ -13,3 +13,15 @@ class Office(models.Model):
 	rating = models.FloatField('Рейтинг')
 	email = models.CharField('E-mail', max_length = 30)
 	password = models.CharField('Password', max_length = 15)
+	def username(self):
+		return self.username
+	def sex(self):
+		return self.sex
+	def age(self):
+		return self.age
+	def town(self):
+		return self.town
+	def interest(self):
+		return self.interest
+	def rating(self):
+		return self.rating
