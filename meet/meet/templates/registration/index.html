@@ -16,7 +16,7 @@
     <div class="header_logo">Регистрация во Fresh Meet</div>
 </header>
 
-<form action="/test/" method="post">
+<form action="/reg_success/" method="post">
 
     {% csrf_token %}
 
@@ -50,7 +50,7 @@
 
     <div class="intro_2">
         <label class="intro__text" for="your_hobby">Выберите ваше основное увлечение </label>
-        <p><input list="your_hobby" type="text" name="your_hobby" value="{{ current_town }}"></p>
+        <p><input list="your_hobby" type="text" name="your_hobby" value="{{ current_hobby }}"></p>
         <datalist class="intro__pole" id="your_hobby">
             <option>Альпинизм</option>
             <option>Скороговорки</option>
@@ -59,17 +59,17 @@
 
     <div class="intro_2">
         <label class="intro__text" for="your_mail">Введите вашу почту </label>
-        <input id="your_mail" type="text" name="your_mail" value="{{ current_age }}">
+        <input id="your_mail" type="text" name="your_mail" value="{{ current_mail }}">
     </div>
 
     <div class="intro_2">
         <label class="intro__text" for="your_password">Придумайте пароль </label>
-        <input id="your_password" type="text" name="your_password" value="{{ current_age }}">
+        <input id="your_password" type="text" name="your_password" value="{{ current_password }}">
     </div>
 
     <div class="intro_2">
         <label class="intro__text" for="your_password2">Повторите пароль </label>
-        <input id="your_password2" type="text" name="your_password2" value="{{ current_age }}">
+        <input id="your_password2" type="text" name="your_password2" value="{{ current_password }}">
     </div>
 
     <div class="intro_2">
