@@ -77,6 +77,8 @@ h1, h2, h3, h4, h5, h6 {
     transition: background .2s linear;
     border-radius: 10px;
 
+    background-color: #CFDAEC;
+
 }
 
 .button:hover {
