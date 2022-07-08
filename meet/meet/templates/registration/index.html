@@ -12,6 +12,12 @@
 
 <body>
 
+<form action="/test/" method="post">
+    <label for="your_name">Your name: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
+
 <header class="header">
     <div class="header_logo">Регистрация во Fresh Meet</div>
 </header>
@@ -32,6 +38,14 @@
         </datalist>
     </form>
 </div>
+
+<form class = "intro_2" action="/test/" method="post">
+    {% csrf_token %}
+    <label for="your_name">Your name: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
+
 
 <div class="intro_2">
     <a class="intro__text_2">Введите ваш возраст</a>
