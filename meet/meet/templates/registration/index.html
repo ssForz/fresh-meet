@@ -10,89 +10,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@200&display=swap" rel="stylesheet">
 </head>
 
-<body>
-
-<form action="/test/" method="post">
-    <label for="your_name">Your name: </label>
-    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
-    <input type="submit" value="OK">
-</form>
+<body class="body">
 
 <header class="header">
     <div class="header_logo">Регистрация во Fresh Meet</div>
 </header>
 
-<div class="intro">
-    <a class="intro__text">Введите ваше имя</a>
-    <input class="intro__pole" type="text">
+<form action="/test/" method="post">
 
-</div>
+    {% csrf_token %}
 
-<div class="intro_2">
-    <a class="intro__text_2">Выберите ваш пол</a>
-    <form>
-        <p><input class="intro__pole" list="sex"></p>
-        <datalist class="intro__pole" id="sex">
+    <div class="intro">
+        <label class="intro__text" for="your_name">Введите ваше имя </label>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    </div>
+
+    <div class="intro_2">
+        <label class="intro__text" for="your_sex">Выберите ваш пол </label>
+        <p><input list="your_sex" type="text" name="your_sex" value="{{ current_sex }}"></p>
+        <datalist class="intro__pole" id="your_sex">
             <option>Женский</option>
             <option>Мужской</option>
         </datalist>
-    </form>
-</div>
+    </div>
 
-<form class = "intro_2" action="/test/" method="post">
-    {% csrf_token %}
-    <label for="your_name">Your name: </label>
-    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
-    <input type="submit" value="OK">
-</form>
+    <div class="intro_2">
+        <label class="intro__text" for="your_age">Введите ваш возраст </label>
+        <input id="your_age" type="text" name="your_age" value="{{ current_age }}">
+    </div>
 
-
-<div class="intro_2">
-    <a class="intro__text_2">Введите ваш возраст</a>
-    <input class="intro__pole" type="text">
-</div>
-
-<div class="intro_2">
-    <a class="intro__text_2">Выберите город в котором вы проживаете</a>
-    <form>
-        <p><input class="intro__pole" list="town"></p>
-        <datalist class="intro__pole" id="town">
+    <div class="intro_2">
+        <label class="intro__text" for="your_town">Выберите город в котором вы проживаете </label>
+        <p><input list="your_town" type="text" name="your_town" value="{{ current_town }}"></p>
+        <datalist class="intro__pole" id="your_town">
             <option>Москва</option>
             <option>Красногорск</option>
         </datalist>
-    </form>
-</div>
+    </div>
 
-<div class="intro_2">
-    <a class="intro__text_2">Выберите ваше основное увлечение</a>
-    <form>
-        <p><input class="intro__pole" list="hobbys"></p>
-        <datalist class="intro__pole" id="hobbys">
+    <div class="intro_2">
+        <label class="intro__text" for="your_hobby">Выберите ваше основное увлечение </label>
+        <p><input list="your_hobby" type="text" name="your_hobby" value="{{ current_town }}"></p>
+        <datalist class="intro__pole" id="your_hobby">
             <option>Альпинизм</option>
             <option>Скороговорки</option>
         </datalist>
-    </form>
-</div>
+    </div>
 
-<div class="intro_2">
-    <a class="intro__text">Введите вашу почту</a>
-    <input class="intro__pole" type="text">
+    <div class="intro_2">
+        <label class="intro__text" for="your_mail">Введите вашу почту </label>
+        <input id="your_mail" type="text" name="your_mail" value="{{ current_age }}">
+    </div>
 
-</div>
+    <div class="intro_2">
+        <label class="intro__text" for="your_password">Придумайте пароль </label>
+        <input id="your_password" type="text" name="your_password" value="{{ current_age }}">
+    </div>
 
-<div class="intro_2">
-    <a class="intro__text_2">Придумайте пароль</a>
-    <input class="intro__pole" type="text">
-</div>
+    <div class="intro_2">
+        <label class="intro__text" for="your_password2">Повторите пароль </label>
+        <input id="your_password2" type="text" name="your_password2" value="{{ current_age }}">
+    </div>
 
-<div class="intro_2">
-    <a class="intro__text_2">Повторите пароль</a>
-    <input class="intro__pole" type="text">
-</div>
+    <div class="intro_2">
+        <input class="button" type="submit" value="Регистрация">
+    </div>
 
-<div class="intro_2">
-    <a class="button" href="#">Регистрация</a>
-</div>
+</form>
 
 </body>
 
