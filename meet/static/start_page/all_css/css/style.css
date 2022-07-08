@@ -179,6 +179,12 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 90px;
 }
 
+.about_2{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 300px;
+}
+
 .about__item{
     width: 300px;
     background-color: #0B4F76;
