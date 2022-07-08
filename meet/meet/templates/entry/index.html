@@ -16,19 +16,27 @@
     <div class="header_logo">Вход в Fresh Meet</div>
 </header>
 
-<div class="intro">
-    <a class="intro__text">Введите почту</a>
-    <input class="intro__pole" type="text">
+<form action="/reg_success/" method="post">
 
-</div>
+    {% csrf_token %}
+
+    <div class="intro">
+        <label class="intro__text" for="your_mail">Введите ваше имя </label>
+        <input id="your_mail" type="text" name="your_mail" value="{{ current_mail }}">
+    </div>
+
+    <div class="intro_2">
+        <label class="intro__text" for="your_password">Введите ваше имя </label>
+        <input id="your_passsword" type="text" name="your_password" value="{{ current_password }}">
+    </div>
+
+    <div class="intro_2">
+        <input class="button" type="submit" value="Вход">
+    </div>
+
+</form>
 
 <div class="intro_2">
-    <a class="intro__text_2">Введите пароль</a>
-    <input class="intro__pole" type="text">
-</div>
-
-<div class="intro_2">
-    <a class="button" href="http://127.0.0.1:8000/">Войти</a>
     <p class="intro_2__text_vniz">У вас еще нет аккаунта на нашем сайте? Зарегистрируйтесь скорее!</p>
     <a class="button" href="http://127.0.0.1:8000/registration">Регистрация</a>
 </div>
