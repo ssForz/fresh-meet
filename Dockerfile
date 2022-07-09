@@ -13,8 +13,6 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 	gcc libc-dev linux-headers postgresql-dev
 RUN pip install -r /requirements.txt
 
-RUN python3 ./meet/manage.py makemigrations
-RUN python3 ./meet/manage.py migrate
 # Remove dependencies
 RUN apk del .tmp-build-deps
 
