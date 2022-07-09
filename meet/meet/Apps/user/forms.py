@@ -24,3 +24,9 @@ class PasswordForm(forms.Form):
 
 class PasswordCheckForm(forms.Form):
     your_password2 = forms.CharField(label='your_password2', max_length = 15)
+
+class LogMailForm(forms.Form):
+    log_mail = forms.CharField(label='your_mail', max_length = 30)
+
+class LogPasswordForm(forms.Form):
+    log_password = forms.CharField(label='your_password', max_length = 15)

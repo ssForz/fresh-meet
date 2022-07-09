@@ -22,3 +22,7 @@ class Person(models.Model):
 
 	def __str__(self):
 		return self.username
+
+class Log_Person(models.Model):
+
+	User_id = models.CharField('User_id', max_length = 30, null=True)
