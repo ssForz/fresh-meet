@@ -34,6 +34,11 @@ def reg_success(request):
 
             your_password = form_password.cleaned_data.get("your_password")
 
+            your_password2 = form_password2.cleaned_data.get("your_password2")
+
+            if your_password2 != your_password:
+                HttpResponseNotFound("error in pass")
+
             b = Person(username = your_name, sex=your_sex, age = your_age, town = your_town, interest = your_hobby, rating = 0, email = your_mail, password = your_password)
             b.save()
             return render(request, 'start_page/index.html')
