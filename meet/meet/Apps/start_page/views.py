@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound, HttpResponse
 
-from user.forms import NameForm, AgeForm, SexForm, TownForm, HobbyForm, MailForm, PasswordForm, PasswordCheckForm, TelegramForm
+from user.forms import NameForm, AgeForm, SexForm, TownForm, HobbyForm, MailForm, PasswordForm, PasswordCheckForm
 from user.models import Person, Log_Person, Search
 def index(request):
     return render(request, 'start_page/index.html') 
@@ -14,11 +14,10 @@ def reg_success(request):
         form_town = TownForm(request.POST)
         form_hobby = HobbyForm(request.POST)
         form_mail = MailForm(request.POST)
-        form_telegram = TelegramForm(request.POST)
         form_password = PasswordForm(request.POST)
         form_password2 = PasswordCheckForm(request.POST)
 
-        if form_name.is_valid() and form_age.is_valid() and form_sex.is_valid() and form_town.is_valid() and form_hobby.is_valid() and form_mail.is_valid() and form_password.is_valid() and form_password2.is_valid() and form_telegram.is_valid():
+        if form_name.is_valid() and form_age.is_valid() and form_sex.is_valid() and form_town.is_valid() and form_hobby.is_valid() and form_mail.is_valid() and form_password.is_valid() and form_password2.is_valid():
             from user.models import Person
 
             your_name = form_name.cleaned_data.get("your_name")
@@ -36,11 +35,9 @@ def reg_success(request):
 
             your_mail = form_mail.cleaned_data.get("your_mail")
 
-            your_telegram = form_telegram.cleaned_data.get("your_telegram")
-
             news = Person.objects.all()
             for i in news:
-                if i.email == your_mail || i.telegram == your_telegram:
+                if i.email == your_mail:
                     return render(request, 'registration/index.html')
             your_password = form_password.cleaned_data.get("your_password")
 
@@ -49,7 +46,7 @@ def reg_success(request):
             if your_password != your_password2: 
                 return render(request, 'registration/index.html')
 
-            b = Person(username = your_name, sex=your_sex, age = your_age, town = your_town, interest = your_hobby, rating = 0, email = your_mail, telegram = your_telegram, password = your_password, online = False, token = '')
+            b = Person(username = your_name, sex=your_sex, age = your_age, town = your_town, interest = your_hobby, rating = 0, email = your_mail, password = your_password, online = False, token = '')
             b.save()
             return render(request, 'start_page/index.html')
 
@@ -80,38 +77,39 @@ def log_success(request):
 
 
 def search_success(request):
-
     if request.method == 'POST':
-        User_Token = request.COOKIES.get('csrftoken')
+        my_token = request.COOKIES.get('csrftoken')
         news = Person.objects.all()
-        User_id = 0
-        check = 0
-        for i in news:
-            if User_Token == i.token:
-                check = 1
-                User_id = i.id
-        if check == 0:
-            return render(request, 'entry/index.html')
         base_search = Search.objects.all()
-        Can_search = 1
+        my_token = ''
+        my_id = 0
+        my_interest = ''
+        my_town = ''
+        for i in Person:
+            if str(my_token) == str(i.token):
+                my_id = int(i.id)
+                my_interest = str(i.interest)
+                my_town = str(i.town)
+        already_in_search = 0
         for i in base_search:
-            if int(User_id) == int(i.user_id):
-                return render(request, 'start_page/index.html')
-        for i in news:
-            if i.token == User_Token and i.online == True:
-                q = Search(user_id = i.id, interest = i.interest, town = i.town)
-                q.save()
-        step = 0
+            if int(user_id) == int(i.user_id):
+                already_in_search = 1
+        q = Search(user_id = my_id, interest = my_interest,town = my_town)
+        if already_in_search == 0:
+            q.save()
         base_search = Search.objects.all()
-        for i in base_search:
-            for j in base_search:
-                step = i.user_id
-                if str(i.town) == str(j.town) and str(i.interest) == str(j.interest) and int(i.user_id) != int(j.user_id):
-                    if int(User_id) == int(i.user_id) or int(User_id) == int(j.user_id):
-                        i.delete()
-                        j.delete()
-                        return HttpResponseNotFound("Собеседник найден")
-    return HttpResponseNotFound("Error")
+        success = 0
+        answer_id = 0
+        while(true):
+            for compain in base_search():
+                if str(my_town) == str(compain.town) and str(my_interest) == str(compain.interest) and int(my_id) != int(compain.user_id):
+                    success = 1
+                    answer_id = int(companion_user_id)
+                    break
+            if (success == 1):
+                q.delete()
+                break           
+    return HttpResponseNotFound(answer_id)
 
 
 def off_success(request):
