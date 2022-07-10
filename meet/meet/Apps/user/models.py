@@ -30,3 +30,11 @@ class Person(models.Model):
 class Log_Person(models.Model):
 
 	user_id = models.CharField('User_id', max_length = 30, null=True)
+
+class Search(models.Model):
+
+	user_id = models.CharField('User_id', max_length = 30, null=True)
+
+	interest = models.CharField('Увлечение', max_length = 35, null=True)
+
+	town = models.CharField('Город', max_length = 30, null=True)
