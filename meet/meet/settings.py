@@ -30,7 +30,7 @@ SECRET_KEY = '1^)iju*8g7qs+v_x*$3^)y7s%1^gvt9nd#b6b(l)-i4wh!l0o%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['5.188.143.108']
 
 
 # Application definition
@@ -83,33 +83,33 @@ WSGI_APPLICATION = 'meet.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('POSTGRES_NAME'),
-#         'USER': os.environ.get('POSTGRES_USER'),
-#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-#         'HOST': 'db',
-#         'PORT': 5433,
-#     }
-# }
-
-#TODO remove old connection
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'postgres',
-
-        'USER': 'postgres',
-
-        'PASSWORD': 'postgres',
-
-        'HOST': 'localhost',
-
-        'PORT': '5433',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
+
+#TODO remove old connection
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#
+#        'NAME': 'postgres',
+#
+#        'USER': 'postgres',
+#
+#        'PASSWORD': 'postgres',
+#
+#        'HOST': 'localhost',
+#
+#        'PORT': '5433',
+#    }
+#}
 
 
 # Password validation
