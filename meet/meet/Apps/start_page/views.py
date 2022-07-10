@@ -26,12 +26,19 @@ def reg_success(request):
 
             your_sex = form_sex.cleaned_data.get("your_sex")
 
+            if your_sex != 'Мужской' or your_sex != 'Женский':
+                return render(request, 'registration/index.html')
+                
             your_town = form_town.cleaned_data.get("your_town")
 
             your_hobby = form_hobby.cleaned_data.get("your_hobby")
 
             your_mail = form_mail.cleaned_data.get("your_mail")
 
+            news = Person.objects.all()
+            for i in news:
+                if i.mail == your_mail:
+                    return render(request, 'registration/index.html')
             your_password = form_password.cleaned_data.get("your_password")
 
             your_password2 = form_password2.cleaned_data.get("your_password2")
