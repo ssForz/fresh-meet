@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 
 from user.forms import NameForm, AgeForm, SexForm, TownForm, HobbyForm, MailForm, PasswordForm, PasswordCheckForm
-
+from user.models import Person, Log_Person
 def index(request):
     return render(request, 'start_page/index.html') 
 
@@ -36,11 +36,30 @@ def reg_success(request):
 
             your_password2 = form_password2.cleaned_data.get("your_password2")
 
-            if your_password2 != your_password:
-                HttpResponseNotFound("error in pass")
-
             b = Person(username = your_name, sex=your_sex, age = your_age, town = your_town, interest = your_hobby, rating = 0, email = your_mail, password = your_password)
             b.save()
             return render(request, 'start_page/index.html')
 
     return HttpResponseNotFound("hello")
+
+def log_success(request):
+    if request.method == 'POST':
+        form_log_mail = MailForm(request.POST)
+        form_log_password = PasswordForm(request.POST)
+        if form_log_mail.is_valid() and form_log_password.is_valid():
+            from user.models import Log_Person
+            log_mail = form_log_mail.cleaned_data.get("your_mail")
+            log_password = form_log_password.cleaned_data.get('your_password')
+            #log_user = Log_Person(l_email=log_mail, l_p)
+            #log_user.save()
+            news = Person.objects.all()
+            for i in news:
+                if i.email == log_mail and i.password == log_password:
+                    #return HttpResponseNotFound(i.id)
+                    #log_user = Log_Person(l_password=i.id)
+                    #log_user.save()
+                    return render(request, 'start_page/index.html')
+            return render(request, 'entry/index.html')
+            
+
+    return HttpResponseNotFound("hey")
