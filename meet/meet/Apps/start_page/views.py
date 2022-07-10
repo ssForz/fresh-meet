@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound, HttpResponse
 
 from user.forms import NameForm, AgeForm, SexForm, TownForm, HobbyForm, MailForm, PasswordForm, PasswordCheckForm
-from user.models import Person, Log_Person
+from user.models import Person, Log_Person, Search
 def index(request):
     return render(request, 'start_page/index.html') 
 
@@ -50,7 +50,7 @@ def reg_success(request):
             b.save()
             return render(request, 'start_page/index.html')
 
-    return HttpResponseNotFound("hello")
+    return HttpResponseNotFound("Error")
 
 def log_success(request):
     if request.method == 'POST':
@@ -73,4 +73,18 @@ def log_success(request):
             return render(request, 'entry/index.html')
             
 
-    return HttpResponseNotFound("hey")
+    return HttpResponseNotFound("Error")
+
+
+def search_success(request):
+    if request.method == 'POST':
+        User_Token = request.COOKIES.get('csrftoken')
+        news = Person.objects.all()
+        for i in news:
+            if i.token == User_Token and i.online == True:
+               q = Search(user_id = i.id, interest = i.interest, town = i.town)
+               q.save()
+               return render(request, 'start_page/index.html')
+    return HttpResponseNotFound("Error")
+
+
