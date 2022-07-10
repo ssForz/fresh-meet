@@ -37,7 +37,7 @@ def reg_success(request):
 
             news = Person.objects.all()
             for i in news:
-                if i.mail == your_mail:
+                if i.email == your_mail:
                     return render(request, 'registration/index.html')
             your_password = form_password.cleaned_data.get("your_password")
 
@@ -63,11 +63,11 @@ def log_success(request):
             news = Person.objects.all()
             for i in news:
                 if i.email == log_mail and i.password == log_password:
-                    i.online = True;
                     i.token = request.COOKIES.get('csrftoken')
                     for check in news:
                         if check.token == i.token and i.email != check.email:
                             return HttpResponseNotFound("Сиди с одного аккаунта, мерзавец))))")
+                    i.online = True;
                     i.save()
                     return render(request, 'start_page/index.html')
             return render(request, 'entry/index.html')
