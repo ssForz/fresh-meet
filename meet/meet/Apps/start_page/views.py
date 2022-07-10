@@ -77,18 +77,22 @@ def log_success(request):
 
 
 def search_success(request):
+
     if request.method == 'POST':
         User_Token = request.COOKIES.get('csrftoken')
         news = Person.objects.all()
         User_id = 0
+        check = 0
         for i in news:
             if User_Token == i.token:
+                check = 1
                 User_id = i.id
+        if check == 0:
+            return render(request, 'entry/index.html')
         base_search = Search.objects.all()
         Can_search = 1
         for i in base_search:
             if int(User_id) == int(i.user_id):
-                #Can_search = 0
                 return render(request, 'start_page/index.html')
         for i in news:
             if i.token == User_Token and i.online == True:
