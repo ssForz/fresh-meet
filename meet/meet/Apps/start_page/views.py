@@ -80,11 +80,28 @@ def search_success(request):
     if request.method == 'POST':
         User_Token = request.COOKIES.get('csrftoken')
         news = Person.objects.all()
+        User_id = 0
+        for i in news:
+            if User_Token == i.token:
+                User_id = i.id
+        base_search = Search.objects.all()
+        Can_search = 1
+        for i in base_search:
+            if int(User_id) == int(i.user_id):
+                #Can_search = 0
+                return render(request, 'start_page/index.html')
         for i in news:
             if i.token == User_Token and i.online == True:
-               q = Search(user_id = i.id, interest = i.interest, town = i.town)
-               q.save()
-               return render(request, 'start_page/index.html')
+                q = Search(user_id = i.id, interest = i.interest, town = i.town)
+                q.save()
+        step = 0
+        base_search = Search.objects.all()
+        for i in base_search:
+            for j in base_search:
+                step = i.user_id
+                if str(i.town) == str(j.town) and str(i.interest) == str(j.interest) and int(i.user_id) != int(j.user_id):
+                    if int(User_id) == int(i.user_id) or int(User_id) == int(j.user_id):
+                        i.delete()
+                        j.delete()
+                        return HttpResponseNotFound("Собеседник найден")
     return HttpResponseNotFound("Error")
-
-
