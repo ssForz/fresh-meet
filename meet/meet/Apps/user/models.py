@@ -20,6 +20,10 @@ class Person(models.Model):
 
 	password = models.CharField('Password', max_length = 15, null=True)
 
+	online = models.BooleanField('Session status', default = False)
+
+	token = models.CharField('Token session', max_length = 200, null = True)
+
 	def __str__(self):
 		return self.username
 
