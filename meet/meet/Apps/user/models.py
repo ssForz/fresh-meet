@@ -18,6 +18,8 @@ class Person(models.Model):
 
 	email = models.CharField('E-mail', max_length = 30, null=True)
 
+	telegram = models.CharField('Telegram', max_length = 30, null = True)
+
 	password = models.CharField('Password', max_length = 15, null=True)
 
 	online = models.BooleanField('Session status', default = False)
