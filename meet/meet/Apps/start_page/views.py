@@ -58,6 +58,9 @@ def log_success(request):
                 if i.email == log_mail and i.password == log_password:
                     i.online = True;
                     i.token = request.COOKIES.get('csrftoken')
+                    for check in news:
+                        if check.token == i.token and i.email != check.email:
+                            return HttpResponseNotFound("Сиди с одного аккаунта, мерзавец))))")
                     i.save()
                     return render(request, 'start_page/index.html')
             return render(request, 'entry/index.html')
