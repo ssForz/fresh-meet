@@ -90,6 +90,15 @@
                     сможете устроить себе встречу в соответствии с вашем увлечением.
                     Не тормози, присоединяйся! </p>
             </div>
+            <form action="/reg_success/" method="post">
+
+                {% csrf_token %}
+
+                <div class="intro_2">
+                    <input class="button" type="submit" value="Начать поиск встречи">
+                </div>
+
+            </form>
         </div>
 
         <div class="about_2">
@@ -98,6 +107,63 @@
                     <img  src="{% static 'start_page/all_css/img/2.jpg' %}" alt="" width="600" height="400">
                 </div>
                 <div class="about__text_2">Присоединяйтесь к нам!</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <div class="section_header">
+            <h3 class="section_suptitle">Мы рады улучшать сервис для вас</h3>
+            <h2 class="section_title">Не нашли свой город или увлечение?</h2>
+            <div class="section_text">
+                <p>
+                    На нашем форуме не нашлось увлечения, подходящего именно вам?
+                    Или же города в котором вы проживаете еще нет в базе?
+                    Не переживайте, мы рады работать и расширяться ради наших пользователей.
+                    Но нам нужно немного вашей помощи! Напишите письмо с предложением
+                    на почту fresh_meet@yandex.ru и мы обязательно рассмотрим его и постараемся добавить
+                    подходящее вам увлечение или же место проживания! </p>
+            </div>
+        </div>
+
+        <div class="about">
+            <div class="about__item">
+                <div class="about__img">
+                    <img src="{% static 'start_page/all_css/img/end_img_1.jpeg' %}" alt="" width="300" height="300">
+                </div>
+                <div class="about__text">Напишите нам</div>
+            </div>
+            <div class="about__item">
+                <div class="about__img">
+                    <img src="{% static 'start_page/all_css/img/end_img_2.jpeg' %}" alt="" width="300" height="300">
+                </div>
+                <div class="about__text">Наш менеджер обработает заявку</div>
+            </div>
+            <div class="about__item">
+                <div class="about__img">
+                    <img src="{% static 'start_page/all_css/img/end_img_3.jpeg' %}" alt="" width="300" height="300">
+                </div>
+                <div class="about__text">Вы сможете искать собеседников исходя именно из ваших увлечений</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="about">
+            <div class="about__item_3">
+                <div class="contact_text">Наши контакты:</div>
+            </div>
+            <div class="about__item_3">
+                <div class="contact_text">Телефон: 8-800-000-00-00</div>
+            </div>
+            <div class="about__item_3">
+                <div class="contact_text">Почта: fresh_meet@yandex.ru</div>
             </div>
         </div>
     </div>
