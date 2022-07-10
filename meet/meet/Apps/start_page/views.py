@@ -109,3 +109,17 @@ def search_success(request):
                         j.delete()
                         return HttpResponseNotFound("Собеседник найден")
     return HttpResponseNotFound("Error")
+
+
+def off_success(request):
+    check_token = request.COOKIES.get('csrftoken')
+
+    base_out = Person.objects.all()
+
+    for i in base_out:
+        if i.token == check_token:
+            i.online = False
+            i.token = ''
+            i.save()
+            return render(request, 'start_page/index.html')
+    return HttpResponseNotFound('help')
