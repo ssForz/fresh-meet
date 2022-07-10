@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'office/all_css/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'office_edit/all_css/css/style.css' %}">
     <title>Личный кабинет</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,40 +31,40 @@
     <a class="header_logo">Личный кабинет в Fresh Meet</a>
 </div>
 
-<div class="intro_2">
-    <input class="button" type="submit" value="Редактировать профиль">
-</div>
+<form action="/log_success/" method="post">
 
-<div class="intro_2">
-    <a class="intro_2__text_vniz" >Имя</a>
-    <a class="intro__text">{{ your_name }}</a>
+    {% csrf_token %}
 
-</div>
+    <div class="intro_2">
+        <label class="intro_2__text_vniz" for="your_name">Имя </label>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    </div>
 
-<div class="intro_2">
-    <a class="intro_2__text_vniz">Пол</a>
-    <a class="intro__text">{{your_sex}}</a>
-</div>
+    <div class="intro_2">
+        <label class="intro_2__text_vniz" for="your_sex">Пол </label>
+        <input id="your_sex" type="text" name="your_sex" value="{{ current_sex }}">
+    </div>
 
-<div class="intro_2">
-    <a class="intro_2__text_vniz">Возраст</a>
-    <a class="intro__text">{{your_age}}</a>
-</div>
+    <div class="intro_2">
+        <label class="intro_2__text_vniz" for="your_age">Возраст </label>
+        <input id="your_age" type="text" name="your_age" value="{{ current_age }}">
+    </div>
 
-<div class="intro_2">
-    <a class="intro_2__text_vniz">Город</a>
-    <a class="intro__text">{{your_town}}</a>
-</div>
+    <div class="intro_2">
+        <label class="intro_2__text_vniz" for="your_town">Город </label>
+        <input id="your_town" type="text" name="your_town" value="{{ current_town }}">
+    </div>
 
-<div class="intro_2">
-    <a class="intro_2__text_vniz">Увлечение</a>
-    <a class="intro__text">{{your_hobby}}</a>
-</div>
+    <div class="intro_2">
+        <label class="intro_2__text_vniz" for="your_hobby">Увлечение </label>
+        <input id="your_hobby" type="text" name="your_hobby" value="{{ current_hobby }}">
+    </div>
 
+    <div class="intro_2">
+        <input class="button" type="submit" value="Сохранить">
+    </div>
 
-<div class="intro_2">
-    <input class="button" type="submit" value="Выйти">
-</div>
+</form>
 
 </body>
 
