@@ -26,7 +26,7 @@ def reg_success(request):
 
             your_sex = form_sex.cleaned_data.get("your_sex")
 
-            if your_sex != 'Мужской' or your_sex != 'Женский':
+            if your_sex != 'Мужской' and your_sex != 'Женский':
                 return render(request, 'registration/index.html')
                 
             your_town = form_town.cleaned_data.get("your_town")
