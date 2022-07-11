@@ -106,7 +106,7 @@ def search_success(request):
                 if str(i.town) == str(j.town) and str(i.interest) == str(j.interest) and int(i.user_id) != int(j.user_id):
                     if int(User_id) == int(i.user_id) or int(User_id) == int(j.user_id):
                         i.delete()
-                        save_id = User_id
+                        save_id = j.user_id
                         j.delete()
                         for x in news:
                             if x.id == save_id:
