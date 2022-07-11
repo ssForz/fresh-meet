@@ -82,7 +82,7 @@ def search_success(request):
         news = Person.objects.all()
         User_id = 0
         check = 0
-        save_name = '';
+        your_name = ''
         for i in news:
             if User_Token == i.token:
                 check = 1
@@ -106,13 +106,13 @@ def search_success(request):
                 if str(i.town) == str(j.town) and str(i.interest) == str(j.interest) and int(i.user_id) != int(j.user_id):
                     if int(User_id) == int(i.user_id) or int(User_id) == int(j.user_id):
                         i.delete()
-                        save_id = j.user_id
+                        save_id = User_id
                         j.delete()
                         for x in news:
                             if x.id == save_id:
-                                save_name = x.username
+                                your_telegram = x.username
                         context2 = {
-                            'your_telegram' : save_name,
+                            'your_telegram' : your_telegram,
                         }
                         return render(request, 'found/index.html', context = context2)
     return render(request, 'queue/index.html')
