@@ -100,7 +100,7 @@ def search_success(request):
         base_search = Search.objects.all()
         success = 0
         answer_id = 0
-        your_telegram = '';
+        your_telegram = ''
         while(true):
             for compain in base_search():
                 if str(my_town) == str(compain.town) and str(my_interest) == str(compain.interest) and int(my_id) != int(compain.user_id):
@@ -108,7 +108,7 @@ def search_success(request):
                     answer_id = int(companion_user_id)
                     for i in search:
                         if i.id == answer_id:
-                            your_telegram = i.username;
+                            your_telegram = i.username
                     break
             if (success == 1):
                 q.delete()
