@@ -115,7 +115,7 @@ def search_success(request):
                 break       
 
     context2 = {
-        'your_name': your_telegram,
+        'your_telegram': your_telegram,
     }   
     return render(request, 'found/index.html', context = context2)
 
