@@ -85,14 +85,14 @@ def search_success(request):
         my_id = 0
         my_interest = ''
         my_town = ''
-        for i in Person:
+        for i in news:
             if str(my_token) == str(i.token):
                 my_id = int(i.id)
                 my_interest = str(i.interest)
                 my_town = str(i.town)
         already_in_search = 0
         for i in base_search:
-            if int(user_id) == int(i.user_id):
+            if int(my_id) == int(i.user_id):
                 already_in_search = 1
         q = Search(user_id = my_id, interest = my_interest,town = my_town)
         if already_in_search == 0:
@@ -101,7 +101,7 @@ def search_success(request):
         success = 0
         answer_id = 0
         your_telegram = ''
-        while(true):
+        while(True):
             for compain in base_search():
                 if str(my_town) == str(compain.town) and str(my_interest) == str(compain.interest) and int(my_id) != int(compain.user_id):
                     success = 1
