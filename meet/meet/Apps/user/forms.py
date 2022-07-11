@@ -24,6 +24,3 @@ class PasswordForm(forms.Form):
 
 class PasswordCheckForm(forms.Form):
     your_password2 = forms.CharField(label='your_password2', max_length = 15)
-
-class TelegramForm(forms.Form):
-    your_telegram = forms.CharField(label='your_telegram', max_length = 30)

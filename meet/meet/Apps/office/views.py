@@ -26,14 +26,12 @@ def index(request):
 			your_sex = i.sex                
 			your_town = i.town
 			your_hobby = i.interest
-			your_telegram = i.telegram
 			context2 = {
 				'your_name': your_name,
 				'your_age': your_age,
 				'your_sex': your_sex,
 				'your_town': your_town,
 				'your_hobby': your_hobby,
-				'your_telegram': your_telegram
 			}
 			return render(request, 'office/index.html', context = context2)
 
