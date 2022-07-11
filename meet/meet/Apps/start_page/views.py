@@ -78,46 +78,44 @@ def log_success(request):
 
 def search_success(request):
     if request.method == 'POST':
-        my_token = request.COOKIES.get('csrftoken')
+        User_Token = request.COOKIES.get('csrftoken')
         news = Person.objects.all()
-        base_search = Search.objects.all()
-        my_token = ''
-        my_id = 0
-        my_interest = ''
-        my_town = ''
+        User_id = 0
+        check = 0
+        save_name = '';
         for i in news:
-            if str(my_token) == str(i.token):
-                my_id = int(i.id)
-                my_interest = str(i.interest)
-                my_town = str(i.town)
-        already_in_search = 0
-        for i in base_search:
-            if int(my_id) == int(i.user_id):
-                already_in_search = 1
-        q = Search(user_id = my_id, interest = my_interest,town = my_town)
-        if already_in_search == 0:
-            q.save()
+            if User_Token == i.token:
+                check = 1
+                User_id = i.id
+        if check == 0:
+            return render(request, 'entry/index.html')
         base_search = Search.objects.all()
-        success = 0
-        answer_id = 0
-        your_telegram = ''
-        while(True):
-            for compain in base_search():
-                if str(my_town) == str(compain.town) and str(my_interest) == str(compain.interest) and int(my_id) != int(compain.user_id):
-                    success = 1
-                    answer_id = int(companion_user_id)
-                    for i in search:
-                        if i.id == answer_id:
-                            your_telegram = i.username
-                    break
-            if (success == 1):
-                q.delete()
-                break       
-
-    context2 = {
-        'your_telegram': your_telegram,
-    }   
-    return render(request, 'found/index.html', context = context2)
+        Can_search = 1
+        for i in base_search:
+            if int(User_id) == int(i.user_id):
+                Can_search = 0
+        for i in news:
+            if i.token == User_Token and i.online == True:
+                q = Search(user_id = i.id, interest = i.interest, town = i.town)
+                q.save()
+        step = 0
+        base_search = Search.objects.all()
+        for i in base_search:
+            for j in base_search:
+                step = i.user_id
+                if str(i.town) == str(j.town) and str(i.interest) == str(j.interest) and int(i.user_id) != int(j.user_id):
+                    if int(User_id) == int(i.user_id) or int(User_id) == int(j.user_id):
+                        i.delete()
+                        save_id = j.user_id
+                        j.delete()
+                        for x in news:
+                            if x.id == save_id:
+                                save_name = x.username
+                        context2 = {
+                            'your_telegram' : save_name,
+                        }
+                        return render(request, 'found/index.html', context = context2)
+    return render(request, 'queue/index.html')
 
 
 def off_success(request):
